@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34FECE0C-FC85-448C-BB0B-3CC53F8441A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{12870263-D236-404E-9095-6F0DA5AA80B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "src\BuildingBlocks\EventBus\EventBus.csproj", "{0E604A65-0F69-4D92-AB4C-6E3B29B094F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Healthchecks", "src\BuildingBlocks\Healthchecks\Healthchecks.csproj", "{75A41862-8EB8-4017-8F98-8A36A71896F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{772061A0-D297-4C2D-9DCD-CD4FF212DF12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleFetchApi", "src\Services\OracleFetchApi\OracleFetchApi.csproj", "{1A56D058-D7AC-4E31-B214-AC3098D5372A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E604A65-0F69-4D92-AB4C-6E3B29B094F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E604A65-0F69-4D92-AB4C-6E3B29B094F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E604A65-0F69-4D92-AB4C-6E3B29B094F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E604A65-0F69-4D92-AB4C-6E3B29B094F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A41862-8EB8-4017-8F98-8A36A71896F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A41862-8EB8-4017-8F98-8A36A71896F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A41862-8EB8-4017-8F98-8A36A71896F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A41862-8EB8-4017-8F98-8A36A71896F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A56D058-D7AC-4E31-B214-AC3098D5372A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A56D058-D7AC-4E31-B214-AC3098D5372A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A56D058-D7AC-4E31-B214-AC3098D5372A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A56D058-D7AC-4E31-B214-AC3098D5372A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12870263-D236-404E-9095-6F0DA5AA80B8} = {34FECE0C-FC85-448C-BB0B-3CC53F8441A9}
+		{0E604A65-0F69-4D92-AB4C-6E3B29B094F9} = {12870263-D236-404E-9095-6F0DA5AA80B8}
+		{75A41862-8EB8-4017-8F98-8A36A71896F9} = {12870263-D236-404E-9095-6F0DA5AA80B8}
+		{772061A0-D297-4C2D-9DCD-CD4FF212DF12} = {34FECE0C-FC85-448C-BB0B-3CC53F8441A9}
+		{1A56D058-D7AC-4E31-B214-AC3098D5372A} = {772061A0-D297-4C2D-9DCD-CD4FF212DF12}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<order orderid="15862" parentordercode="" ordertype="ORDER" type="SINGLE" source="WEB" status="AUT_GOEDEREN_GELEVERD" startset="N" email1="leon.van.egmond@ecmanage.eu" email2="leon.van.egmond@ecmanage.eu" consigneeid="119589" purchaserid="130637" purchaser_comment="" purchaser_extern="ECMLEON" purchaser_firstname="ECM" purchaser_lastname="Leon" purchaser_middlename="" purchaser_fullname="ECM Leon" purchaser_username="ecmleon" purchaser_email="leon.van.egmond@ecmanage.eu" personedit="130637" purchaser_function="" purchaser_functionid_extern="" purchaser_employmenttype="" purchaser_employmenttypeid_extern="" total="10.00" totalExVAT="10.00" totalVAT="10.00" VATValue="0.00" daterequired="2024-03-19" datedeliver="" datecreated="2024-03-11 12:25:18" dateedit="2024-03-11 12:25:24" ordercode="VIRGIN215862" remarks="" paytype="" imgheader="cid:EMAIL_HEADER_VIRGIN2.png-----7D81B75CCC90D2974F7A1CBD" companybaseurl="http://fashionfabriek.ecgoing.nl:81/VIRGIN2">
+  <integrationconfigs>
+    <config tool="EcmanageOrderExactOnline" uniqueidentifier="ECM_ExactOnline">
+      <appSettings>
+        <add key="KEYWORD_BULK_AFDELINGACRO" value="{;;//order[@orderid=&apos;{OID}&apos;]/department;;companyacro;;}"/>
+        <add key="KEYWORD_BULK_AFDELINGNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/department;;companyname;;}"/>
+        <add key="KEYWORD_CON_ACHTERVOORMIDDELNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;lastname;;}{, ;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;firstname;;}{ ;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;middlename;;}"/>
+        <add key="KEYWORD_CON_AFDELINGNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;company;;}"/>
+        <add key="KEYWORD_CON_FUNCTIE" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;function;;}{ (;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;functionid_extern;;)}"/>
+        <add key="KEYWORD_CON_PERSNUMMER" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;personid_extern;;}"/>
+        <add key="KEYWORD_CON_VOORMIDDELACHTERNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;fullname;;}"/>
+        <add key="KEYWORD_CONTACTPERSOON_BESTELLER" value="{;;//order[@orderid=&apos;{OID}&apos;]/purchaserperson;;personid_extern;;}"/>
+        <add key="KEYWORD_CONTACTPERSOON_DRAGER" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;personid_extern;;}"/>
+        <add key="KEYWORD_FACTUURREF" value="{;;//order[@orderid=&apos;{OID}&apos;]/orderattributes/orderattribute[@externid=&apos;FACTUURREF&apos;];;value;;}"/>
+        <add key="KEYWORD_MAATAFWIJKING" value="{;;//orderdetail[@orderdetailid=&apos;{DID}&apos;];;remark;;}{;;//orderdetail[@orderdetailid=&apos;{DID}&apos;]/parameters/parameter[@id=0001];;value;;}"/>
+        <add key="KEYWORD_NEWLINE" value="\r\n123"/>
+        <add key="KEYWORD_OPMERKING" value="{;;//order[@orderid=&apos;{OID}&apos;];;remarks;;}"/>
+        <add key="KEYWORD_OPMERKING_UWREFERENTIE" value="{;;//order[@orderid=&apos;{OID}&apos;];;remarks;;\r\n}{;;//order[@orderid=&apos;{OID}&apos;]/orderattributes/orderattribute[@externid=&apos;REF&apos; or @externid=&apos;REF1&apos; or @externid=&apos;S\REF1&apos; or @externid=&apos;A\REF1&apos; or @externid=&apos;M\REF1&apos; or @externid=&apos;B\REF1&apos;];;value;;}"/>
+        <add key="KEYWORD_ORDERCODE" value="{;;//order[@orderid=&apos;{OID}&apos;];;ordercode;;}"/>
+        <add key="KEYWORD_PAKKET" value="{;;//orderdetail[@orderdetailid=&apos;{DID}&apos;];;setgroupname;;}"/>
+        <add key="KEYWORD_PUR_PERSNUMMER" value="{;;//order[@orderid=&apos;{OID}&apos;]/purchaserperson;;personid_extern;;}"/>
+        <add key="KEYWORD_PUR_VOORMIDDELACHTERNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/purchaserperson;;fullname;;}"/>
+        <add key="KEYWORD_TELNRUPS" value="{;;//order[@orderid=&apos;{OID}&apos;]/orderattributes/orderattribute[@externid=&apos;TELNRUPS&apos;];;value;;}"/>
+        <add key="KEYWORD_UNIT4PREFIX" value="{FCA::UNIT4PREFIX}"/>
+        <add key="ABBOTT\OrderReference" value="{OPMERKING}"/>
+        <add key="DetailReference" value="{MAATAFWIJKING}"/>
+        <add key="OrderInstruction" value="{ORDERCODE} {OPMERKING_UWREFERENTIE}"/>
+        <add key="OrderReference" value="{UNIT4PREFIX}{CON_PERSNUMMER} {CON_VOORMIDDELACHTERNAAM}"/>
+        <add key="OrderReference_BULK" value="{FACTUURREF}"/>
+      </appSettings>
+    </config>
+    <config tool="EcmanageOrderExactOnline" uniqueidentifier="ECM_ExactOnlineACC">
+      <appSettings>
+        <add key="KEYWORD_NEWLINE" value="\r\n"/>
+        <add key="KEYWORD_OPMERKING" value="{;;//order[@orderid=&apos;{OID}&apos;];;remarks;;}"/>
+        <add key="KEYWORD_OPMERKING_UWREFERENTIE" value="{;;//order[@orderid=&apos;{OID}&apos;];;remarks;;\r\n}{;;//order[@orderid=&apos;{OID}&apos;]/orderattributes/orderattribute[@externid=&apos;REF&apos; or @externid=&apos;REF1&apos; or @externid=&apos;S\REF1&apos; or @externid=&apos;A\REF1&apos; or @externid=&apos;M\REF1&apos; or @externid=&apos;B\REF1&apos;];;value;;}"/>
+        <add key="KEYWORD_FACTUURREF" value="{;;//order[@orderid=&apos;{OID}&apos;]/orderattributes/orderattribute[@externid=&apos;FACTUURREF&apos;];;value;;}"/>
+        <add key="KEYWORD_TELNRUPS" value="{;;//order[@orderid=&apos;{OID}&apos;]/orderattributes/orderattribute[@externid=&apos;TELNRUPS&apos;];;value;;}"/>
+        <add key="KEYWORD_ORDERCODE" value="{;;//order[@orderid=&apos;{OID}&apos;];;ordercode;;}"/>
+        <add key="KEYWORD_MAATAFWIJKING" value="{;;//orderdetail[@orderdetailid=&apos;{DID}&apos;];;remark;;}{;;//orderdetail[@orderdetailid=&apos;{DID}&apos;]/parameters/parameter[@id=0001];;value;;}"/>
+        <add key="KEYWORD_CON_VOORMIDDELACHTERNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;fullname;;}"/>
+        <add key="KEYWORD_CON_ACHTERVOORMIDDELNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;lastname;;}{, ;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;firstname;;}{ ;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;middlename;;}"/>
+        <add key="KEYWORD_CON_AFDELINGNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;company;;}"/>
+        <add key="KEYWORD_CON_FUNCTIE" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;function;;}{ (;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;functionid_extern;;)}"/>
+        <add key="KEYWORD_CON_PERSNUMMER" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;personid_extern;;}"/>
+        <add key="KEYWORD_PUR_VOORMIDDELACHTERNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/purchaserperson;;fullname;;}"/>
+        <add key="KEYWORD_PUR_PERSNUMMER" value="{;;//order[@orderid=&apos;{OID}&apos;]/purchaserperson;;personid_extern;;}"/>
+        <add key="KEYWORD_BULK_AFDELINGNAAM" value="{;;//order[@orderid=&apos;{OID}&apos;]/department;;companyname;;}"/>
+        <add key="KEYWORD_BULK_AFDELINGACRO" value="{;;//order[@orderid=&apos;{OID}&apos;]/department;;companyacro;;}"/>
+        <add key="KEYWORD_PAKKET" value="{;;//orderdetail[@orderdetailid=&apos;{DID}&apos;];;setgroupname;;}"/>
+        <add key="KEYWORD_CONTACTPERSOON_DRAGER" value="{;;//order[@orderid=&apos;{OID}&apos;]/companyperson;;personid_extern;;}"/>
+        <add key="KEYWORD_CONTACTPERSOON_BESTELLER" value="{;;//order[@orderid=&apos;{OID}&apos;]/purchaserperson;;personid_extern;;}"/>
+        <add key="KEYWORD_UNIT4PREFIX" value="{FCA::UNIT4PREFIX}"/>
+        <add key="OrderText" value=""/>
+        <add key="OrderInstruction" value="{ORDERCODE} {OPMERKING_UWREFERENTIE}"/>
+        <add key="OrderReference" value="{UNIT4PREFIX}{CON_PERSNUMMER} {CON_VOORMIDDELACHTERNAAM}"/>
+        <add key="OrderReference_BULK" value="{FACTUURREF}"/>
+        <add key="DetailReference" value="{MAATAFWIJKING}"/>
+        <add key="ContactPersonCode" value=""/>
+        <add key="ContactPersonCode_BULK" value=""/>
+        <add key="ABBOTT\OrderReference" value="TEST: {OPMERKING}"/>
+      </appSettings>
+    </config>
+  </integrationconfigs>
+  <ordernotes>
+    <ordernote description=" CONSIGNEE - SENDMAIL_INGEVOERD - ORDER - leon.van.egmond@ecmanage.eu (pt-PT)" person="" notegroup="EMAIL" created_on="2024-03-11 12:25:39" created_by="system" modified_on="2024-03-11 12:25:39" modified_by="system"/>
+    <ordernote description=" PURCHASER - SENDMAIL_INGEVOERD - ORDER - leon.van.egmond@ecmanage.eu (nl-NL)" person="" notegroup="EMAIL" created_on="2024-03-11 12:25:39" created_by="system" modified_on="2024-03-11 12:25:39" modified_by="system"/>
+    <ordernote description=" ROLE - SENDMAIL_INGEVOERD - ORDER - jerry.sun@ecmanage.eu (nl-NL)" person="" notegroup="EMAIL" created_on="2024-03-11 12:25:39" created_by="system" modified_on="2024-03-11 12:25:39" modified_by="system"/>
+    <ordernote description=" ROLE - SENDMAIL_INGEVOERD - ORDER - marcel.vente@ois.nl (nl-NL)" person="" notegroup="EMAIL" created_on="2024-03-11 12:25:39" created_by="system" modified_on="2024-03-11 12:25:39" modified_by="system"/>
+    <ordernote description=" ROLE - SENDMAIL_INGEVOERD - ORDER - aangepast@email.adr (en-US)" person="" notegroup="EMAIL" created_on="2024-03-11 12:25:40" created_by="system" modified_on="2024-03-11 12:25:40" modified_by="system"/>
+    <ordernote description="AUT_GOEDKEUREN" person="" notegroup="APPROVED" created_on="2024-03-11 12:25:40" created_by="system" modified_on="2024-03-11 12:25:40" modified_by="system"/>
+    <ordernote description="System generated xml" person="" notegroup="EXPORT" created_on="2024-03-11 12:25:41" created_by="PLAATS_BESTELLING_PK.beslis_verzenden_leverancier" modified_on="" modified_by=""/>
+    <ordernote description="Set status AFGERONDE_WINKELWAGEN by ECM Leon" person="ECM Leon" notegroup="WORKFLOW" created_on="2024-03-11 12:25:14" created_by="130637" modified_on="2024-03-11 12:25:14" modified_by="130637"/>
+    <ordernote description="1;;1;;VALIDATE_STARTSETORDER;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_ORDERDETAIL_QUANTITIES" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_ORDER_MAX_POINTS_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;0;;VALIDATE_ORDER_MULTIPLE_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_COMBINED_PRODUCT_ORDER_MAXIMUM_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_ORDER_MIN_POINTS_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_COMBINED_PRODUCT_ORDER_MINIMUM_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_OCI_SETUP;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_COMBINED_PRODUCT_STARTORDER_MINIMUM_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+    <ordernote description="1;;1;;VALIDATE_COMBINED_PRODUCT_STARTORDER_MAXIMUM_A;" person="" notegroup="VALIDATION" created_on="2024-03-11 12:25:24" created_by="system" modified_on="2024-03-11 12:25:24" modified_by="system"/>
+  </ordernotes>
+  <orderattributes>
+    <orderattribute description="Attribuut voor Anders en Multi" value="" uservisibility="Y" externid="4" validation=""/>
+    <orderattribute description="Artikelen leveren uit eigen bulkvoorraad (A)" value="N" uservisibility="Y" externid="BULKVOORRAAD" validation=""/>
+    <orderattribute description="BILLINGACRO" value="" uservisibility="N" externid="BILLINGACRO" validation=""/>
+    <orderattribute description="CXML BrowserFormPost" value="" uservisibility="N" externid="CXML_BROWSERFORMPOST" validation=""/>
+    <orderattribute description="CXML Buyer Cookie" value="" uservisibility="N" externid="CXML_BUYERCOOKIE" validation=""/>
+    <orderattribute description="CXML Created" value="" uservisibility="N" externid="CXML_CREATED" validation=""/>
+    <orderattribute description="CXML From Identity" value="" uservisibility="N" externid="CXML_FROM" validation=""/>
+    <orderattribute description="CXML To Identity" value="" uservisibility="N" externid="CXML_TO" validation=""/>
+    <orderattribute description="HOOK_URL" value="" uservisibility="N" externid="HOOK_URL" validation=""/>
+    <orderattribute description="Ignore supply" value="N" uservisibility="N" externid="IGNORESUPPLY" validation=""/>
+    <orderattribute description="Test URL" value="" uservisibility="Y" externid="ORDER_URL" validation=""/>
+    <orderattribute description="PO_ENCODING" value="" uservisibility="N" externid="PO_ENCODING" validation=""/>
+    <orderattribute description="PP_PACK" value="False" uservisibility="N" externid="PP_PACK" validation=""/>
+    <orderattribute description="PP_PROJ" value="" uservisibility="N" externid="PP_PROJ" validation=""/>
+    <orderattribute description="PP_PROJ" value="False" uservisibility="N" externid="PP_PROJ" validation=""/>
+    <orderattribute description="PP_SEND" value="False" uservisibility="N" externid="PP_SEND" validation=""/>
+    <orderattribute description="Project" value=";;" uservisibility="Y" externid="PROJECT" validation=""/>
+    <orderattribute description="PURCHASEORDERAPPROVED" value="" uservisibility="N" externid="PURCHASEORDERAPPROVED" validation=""/>
+    <orderattribute description="Reference 1" value="" uservisibility="Y" externid="REF1" validation=""/>
+    <orderattribute description="Reference 2" value="" uservisibility="Y" externid="REF2" validation=""/>
+    <orderattribute description="RelatedOrders" value="VIRGIN215862" uservisibility="N" externid="RELATEDORDERS" validation=""/>
+    <orderattribute description="selectedaddresstype" value="2" uservisibility="N" externid="SELECTEDADDRESSTYPE" validation=""/>
+    <orderattribute description="SESSIONID" value="" uservisibility="N" externid="SESSIONID" validation=""/>
+    <orderattribute description="SHIPPINGACRO" value="" uservisibility="N" externid="SHIPPINGACRO" validation=""/>
+    <orderattribute description="SUPPLIERORDERID" value="" uservisibility="N" externid="SUPPLIERORDERID" validation=""/>
+    <orderattribute description="tel nr" value="" uservisibility="Y" externid="TELNRUPS" validation=""/>
+    <orderattribute description="Use own supply" value="N" uservisibility="Y" externid="USEOWNSUPPLY" validation=""/>
+    <orderattribute description="selectedaddresstype" value="" uservisibility="N" externid="" validation=""/>
+    <orderattribute description="addressorigin" value="" uservisibility="N" externid="" validation=""/>
+    <orderattribute description="BILLINGACRO" value="" uservisibility="N" externid="" validation=""/>
+    <orderattribute description="addresstype" value="" uservisibility="N" externid="" validation=""/>
+    <orderattribute description="SHIPPINGACRO" value="" uservisibility="N" externid="" validation=""/>
+  </orderattributes>
+  <purchaserperson personid="130637" personid_extern="ECMLEON" genderid="M" firstname="ECM" lastname="Leon" middlename="" fullname="ECM Leon" username="ecmleon" title="" suffix="" prefix="" remarks="" email="leon.van.egmond@ecmanage.eu" company="Virgin2" companyid="8039" function="" functionid_extern="" employmenttype="" employmenttypeid_extern="" acro="VIRGIN2" projectcode="" saldo="0.00">
+    <personfunctions/>
+    <personroles/>
+    <personattributes>
+      <personattribute externid="AD_LOGIN" description="Active Directory username" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="CONTRACTUREN" description="Contracturen" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="CXML_LOGIN" description="CXML Id for login" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="GOOGLE_LOGIN" description="Google e-mail" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="REF0" description="&lt;b&gt;&lt;font color=&quot;red&quot;&gt;Met BHV LOGO:&lt;/font&gt;&lt;/b&gt;" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="REF1" description="Referentie 1" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="REF2" description="Ref 2" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="REF3" description="Reference 3" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="REF4" description="Reference 4 Email " value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="SAML_LOGIN" description="Saml Login" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="WINKELCODE" description="Winkelcode" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_ACTIVATIONTOKEN" description="Description for XTEMP_ACTIVATIONTOKEN" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_LOGINTOKEN" description="Description for XTEMP_LOGINTOKEN" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_SAVEDUSER" description="Description for XTEMP_SAVEDUSER" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_SAVEDUSERCOMPANY" description="Description for XTEMP_SAVEDUSERCOMPANY" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_SAVEDUSERFUNCTION" description="Description for XTEMP_SAVEDUSERFUNCTION" value="" uniqueid="" uservisibility="N"/>
+    </personattributes>
+  </purchaserperson>
+  <companyperson personid="119589" personid_extern="DC" genderid="M" firstname="Dennis" lastname="Coert" middlename="Lisandra" fullname="Titelsssza Dennis Lisandra Coert 34" username="dcoert" title="Titelsssza" suffix="34" prefix="" remarks="" email="dennis@ois.nl" company="London" companyid="14451" function="Cleaner, Clothing coordinator" functionid_extern="f1x, f2" employmenttype="Freelance" employmenttypeid_extern="FLF" acro="F9" projectcode="" saldo="455.27">
+    <personfunctions>
+      <function description="Cleaner" functionid_extern="f2"/>
+      <function description="Clothing coordinator" functionid_extern="f1x"/>
+    </personfunctions>
+    <personroles>
+      <role rolename="Drager" sortorder="4"/>
+      <role rolename="KlantAdmin" sortorder="9"/>
+      <role rolename="POM.Coördinator" sortorder="8"/>
+      <role rolename="POM.Upload" sortorder="3"/>
+    </personroles>
+    <personattributes>
+      <personattribute externid="AD_LOGIN" description="Active Directory username" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="CONTRACTUREN" description="Contracturen" value="39.32" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="CXML_LOGIN" description="CXML Id for login" value="" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="GOOGLE_LOGIN" description="Google e-mail" value="[]leo!#$%&amp;&apos;*+-/=?^_`|~Vonk@test.nl" uniqueid="" uservisibility="N"/>
+      <personattribute externid="REF0" description="&lt;b&gt;&lt;font color=&quot;red&quot;&gt;Met BHV LOGO:&lt;/font&gt;&lt;/b&gt;" value="TestR0_1" uniqueid="" uservisibility="N"/>
+      <personattribute externid="REF1" description="Referentie 1" value="1113" uniqueid="1" uservisibility="Y"/>
+      <personattribute externid="REF1" description="Referentie 1" value="222" uniqueid="2" uservisibility="Y"/>
+      <personattribute externid="REF1" description="Referentie 1" value="333" uniqueid="3" uservisibility="Y"/>
+      <personattribute externid="REF1" description="Referentie 1" value="1113" uniqueid="4" uservisibility="Y"/>
+      <personattribute externid="REF2" description="Ref 2" value="b" uniqueid="1" uservisibility="Y"/>
+      <personattribute externid="REF2" description="Ref 2" value="b" uniqueid="2" uservisibility="Y"/>
+      <personattribute externid="REF2" description="Ref 2" value="b" uniqueid="3" uservisibility="Y"/>
+      <personattribute externid="REF3" description="Reference 3" value="0" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="REF4" description="Reference 4 Email " value="a@a.aa" uniqueid="" uservisibility="Y"/>
+      <personattribute externid="SAML_LOGIN" description="Saml Login" value="test!x" uniqueid="" uservisibility="N"/>
+      <personattribute externid="WINKELCODE" description="Winkelcode" value="ABC123" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_ACTIVATIONTOKEN" description="Description for XTEMP_ACTIVATIONTOKEN" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_LOGINTOKEN" description="Description for XTEMP_LOGINTOKEN" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_SAVEDUSER" description="Description for XTEMP_SAVEDUSER" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_SAVEDUSERCOMPANY" description="Description for XTEMP_SAVEDUSERCOMPANY" value="" uniqueid="" uservisibility="N"/>
+      <personattribute externid="XTEMP_SAVEDUSERFUNCTION" description="Description for XTEMP_SAVEDUSERFUNCTION" value="" uniqueid="" uservisibility="N"/>
+    </personattributes>
+    <addresses>
+      <address classid="2739" projectcode="" addresstypeid="3" preamble="tav" street="straat" extra="extra" primarynumber="123" additionalnumber="a" zipcode="1234ab" city="plaatsnaam" state="" countrycode="NLD" countrycode2="NL" datefrom="2022-02-16" datecreated="2022-02-16 15:09:22">
+        <addressattributes/>
+      </address>
+      <address classid="2739" projectcode="" addresstypeid="1" preamble="" street="Amazonestraat" extra="" primarynumber="30" additionalnumber="" zipcode="3207NB" city="Spijkenisse" state="" countrycode="NLD" countrycode2="NL" datefrom="2023-05-08" datecreated="2023-05-08 15:30:19">
+        <addressattributes/>
+      </address>
+      <address classid="2739" projectcode="" addresstypeid="2" preamble="" street="Laan van Vredenoord" extra="" primarynumber="33" additionalnumber="" zipcode="2289DA" city="Rijswijk" state="" countrycode="NLD" countrycode2="NL" datefrom="2023-05-08" datecreated="2023-05-08 15:30:33">
+        <addressattributes/>
+      </address>
+      <address classid="2739" projectcode="" addresstypeid="2" preamble="" street="Laan van Vredenoord" extra="" primarynumber="33" additionalnumber="" zipcode="2289DA" city="Rijswijk" state="" countrycode="NLD" countrycode2="NL" datefrom="2023-05-08" datecreated="2023-05-08 15:30:50">
+        <addressattributes/>
+      </address>
+      <address classid="2739" projectcode="" addresstypeid="2" preamble="" street="Laan van Vredenoord" extra="" primarynumber="33" additionalnumber="" zipcode="2289 DA" city="Rijswijk" state="" countrycode="NLD" countrycode2="NL" datefrom="2023-05-08" datecreated="2023-05-08 15:31:23">
+        <addressattributes/>
+      </address>
+    </addresses>
+  </companyperson>
+  <addresses>
+    <address classid="2739" projectcode="2" addresstypeid="7" preamble="" street="Laan van Vredenoord" extra="" primarynumber="33" additionalnumber="" zipcode="2289DA" city="Rijswijk" state="" countrycode="NLD" countrycode2="NL" datefrom="2024-03-11" datecreated="2024-03-11 12:25:03">
+      <addressattributes>
+        <addressattribute description="T.A.V." value="" externid="TAV"/>
+        <addressattribute description="Naam" value="" externid="NAAMPERSOON"/>
+      </addressattributes>
+    </address>
+  </addresses>
+  <payments factor="1.00">
+    <payment type="POINTS" amount="10.00" paid="Y"/>
+  </payments>
+  <orderdetaillist>
+    <orderdetail orderdetailid="41519" productid="95434" supplierproductid="Marioaa" productcode="VIRGIN2" productname="MAriio aa kosten" quantity="1" price="10.00" priceexvat="10.00" priceincvat="10.00" pricevatonly="0.00" vatpercentage="0" detailtype="COST_TOTALORDER_SUM" size="Regel 1 kost mario" assortmentid="code_1" status="RECEIVED" numbernotdeliverable="0" numberbackorder="0" numbersend="1" numberreceived="1" numberdeliverable="1" setgroupname="" setgroupidextern="" setdatestart="" datemodified="2024-03-11 12:03:42" deliverydate="" remark="">
+      <product productid="95434" supplierproductid="Marioaa" productcode="VIRGIN2" classid="" productname="MAriio aa kosten" productdescription="mario kosten" active="Y" language="en-US">
+        <productattributes/>
+        <assortmentlist>
+          <assortment assortmentid="170977" measurevalue="Regel 1 kost mario" priceintern="10.00" valutaintern="EUR" priceextern="10.00" valutaextern="EUR" datefrom="2019-06-11 16:49:10" instock="U" active="Y" supplierassortmentid="code_1"/>
+          <assortment assortmentid="170978" measurevalue="Regel 2 kost mario" priceintern="0.00" valutaintern="EUR" priceextern="0.00" valutaextern="EUR" datefrom="2019-06-11 16:49:11" instock="U" active="Y" supplierassortmentid="code_2"/>
+        </assortmentlist>
+      </product>
+      <orderdetailattributes>
+        <orderdetailattribute externid="ORI_OD_TOTAL" value="10" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="SIZE" value="Regel 1 kost mario" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="SUPPLIERASSID" value="code_1" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="VAT" value="0" description="" uservisibility="Y" validation=""/>
+      </orderdetailattributes>
+    </orderdetail>
+    <orderdetail orderdetailid="41516" productid="67641" supplierproductid="PS25-41" productcode="" productname="Amerikaanse Overall" quantity="1" price="0.00" priceexvat="0.00" priceincvat="0.00" pricevatonly="0.00" vatpercentage="0" detailtype="" size="44" assortmentid="PS25-413" status="RECEIVED" numbernotdeliverable="0" numberbackorder="0" numbersend="1" numberreceived="1" numberdeliverable="1" setgroupname="Pakket 1" setgroupidextern="SPKT" setdatestart="2015-11-25" datemodified="2024-03-11 12:03:42" deliverydate="2024-03-12" remark="zxc">
+      <product productid="67641" supplierproductid="PS25-41" productcode="" classid="1710" productname="Amerikaanse Overall" productdescription="Twee loshangend, wegstopbare spijkerzakken – verstevigd met Cordura&amp;#174; – extra zak, 3 kleinere zakjes en gereedschapslussen / Twee ruime voor- en achterzakken / Duimstokzak / Gereedschapszak / Pennenzakje / vestigingen voor een timmermansmes / Beenzak met telefoonzakje en gereedschapszak / Twee hamerlussen, waarvan 1 verstelbaar / Twee loshangende borstzakken die met drukknopen kunnen worden vastgezet / Tweeweg-rits voor / de knie&amp;#235;n met kniezakken van 100% Cordura&amp;#174;. De kniestukken worden aan de binnenzijde aangebracht en kunnen op verschillende hoogtes worden gezet." active="Y" language="en-US">
+        <productattributes/>
+        <assortmentlist>
+          <assortment assortmentid="171005" measurevalue="40" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-411"/>
+          <assortment assortmentid="171006" measurevalue="42" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-412"/>
+          <assortment assortmentid="171008" measurevalue="46" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-414"/>
+          <assortment assortmentid="171009" measurevalue="48" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-415"/>
+          <assortment assortmentid="171010" measurevalue="50" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-416"/>
+          <assortment assortmentid="171011" measurevalue="52" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-417"/>
+          <assortment assortmentid="171012" measurevalue="54" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-418"/>
+          <assortment assortmentid="171013" measurevalue="56" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-419"/>
+          <assortment assortmentid="171014" measurevalue="58" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-420"/>
+          <assortment assortmentid="176268" measurevalue="44" priceintern="0.00" valutaintern="punten" priceextern="" valutaextern="" datefrom="2012-02-01 01:00:00" instock="I" active="Y" supplierassortmentid="PS25-413"/>
+        </assortmentlist>
+      </product>
+      <orderdetailattributes>
+        <orderdetailattribute externid="SIZE" value="44" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="STOCK" value="I" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="SUPPLIERASSID" value="PS25-413" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="VAT" value="0" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="PERMISSION" value="POM_OVERRIDE_VALIDATE_COMBINED_PRODUCTS_ORDER_MAX;POM_OVERRIDE_VALIDATE_COMBINED_PRODUCTS_ORDER_MIN;POM_OVERRIDE_VALIDATE_MIN_POINTS_USER_ORDER;POM_OVERRIDE_VALIDATE_MAX_POINTS_USER_ORDER;POM_OVERRIDE_VALIDATE_MAX_PRODUCTS_ORDER;" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="PERSONID" value="119589" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="COMPANYID" value="14451" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="NALEVEREN" value="N" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="SETID" value="3866" description="" uservisibility="Y" validation=""/>
+        <orderdetailattribute externid="ORI_OD_TOTAL" value="0" description="" uservisibility="Y" validation=""/>
+      </orderdetailattributes>
+    </orderdetail>
+  </orderdetaillist>
+</order>
