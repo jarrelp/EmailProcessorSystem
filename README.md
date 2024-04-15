@@ -23,3 +23,15 @@ RabbitMQ:
 http://localhost:15672/
 guest
 guest
+
+OracleFetchApi:
+cd src/Services/OracleFetchApi
+dapr run --app-id oraclefetchapi --app-port 5000 --dapr-http-port 3500 --dapr-grpc-port 50000 --config ../../../dapr/configuration/config.yaml --resources-path ../../../dapr/components dotnet run
+
+dapr run --app-id oraclefetchapi dotnet run
+
+Webstatus:
+cd src/Web/Webstatus
+dapr run --app-id webstatus --app-port 6000 --dapr-http-port 3600 --dapr-grpc-port 60000 --config ../../../dapr/configuration/config.yaml --resources-path ../../../dapr/components dotnet run
+
+dapr run --app-id webstatus dotnet run

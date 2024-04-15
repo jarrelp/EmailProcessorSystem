@@ -1,4 +1,6 @@
 using OracleFetchApi.Repositories;
+using OracleFetchApi.ViewModel;
+using OracleFetchApi.ViewModel.EmailTemplates;
 
 namespace OracleFetchApi.Services;
 
@@ -12,13 +14,31 @@ public class OracleFetchService : IOracleFetchService
     }
 
     // Methode om alle e-mailwachtrijen op te halen
-    public async Task<List<EmailQueue>> GetAllEmailQueuesAsync()
+    public async Task<List<EmailQueueViewModel>> GetAllEmailQueuesAsync()
     {
-        return await _oracleFetchRepository.GetAllAsync();
+        var emailQueues = await _oracleFetchRepository.GetAllAsync();
+
+        var emailQueueViewModels = new List<EmailQueueViewModel>();
+
+        foreach (var emailQueue in emailQueues)
+        {
+            var emailQueueDto = new EmailQueueViewModel
+            {
+                Email = emailQueue.Email,
+                XslName = emailQueue.XslName,
+                EmailQueueId = emailQueue.EmailQueueId,
+                EmailTemplateId = emailQueue.EmailTemplateId,
+                EmailTemplate = MapToDto(emailQueue.EmailTemplate)
+            };
+
+            emailQueueViewModels.Add(emailQueueDto);
+        }
+
+        return emailQueueViewModels;
     }
 
     // Methode om een enkele e-mailwachtrij op te halen op basis van de ID
-    public async Task<EmailQueue> GetEmailQueueByIdAsync(int id)
+    public async Task<EmailQueueViewModel> GetEmailQueueByIdAsync(int id)
     {
         var emailQueue = await _oracleFetchRepository.GetByIdAsync(id);
         if (emailQueue == null)
@@ -26,12 +46,21 @@ public class OracleFetchService : IOracleFetchService
             throw new Exception($"EmailQueue with id {id} not found");
         }
 
+        var emailQueueViewModel = new EmailQueueViewModel
+        {
+            Email = emailQueue.Email,
+            XslName = emailQueue.XslName,
+            EmailQueueId = emailQueue.EmailQueueId,
+            EmailTemplateId = emailQueue.EmailTemplateId,
+            EmailTemplate = MapToDto(emailQueue.EmailTemplate)
+        };
+
         // // Mapping van het domeinmodel naar een DTO-object
         // var emailQueueDto = _mapper.Map<EmailQueueDto>(emailQueue);
 
         // return emailQueueDto;
 
-        return emailQueue;
+        return emailQueueViewModel;
     }
 
     // Methode om e-mailwachtrij toe te voegen
@@ -53,6 +82,56 @@ public class OracleFetchService : IOracleFetchService
         if (emailQueue != null)
         {
             await _oracleFetchRepository.DeleteAsync(emailQueue);
+        }
+    }
+
+    private object MapToDto(EmailTemplate emailTemplate)
+    {
+        switch (emailTemplate)
+        {
+            case Login loginTemplate:
+                return new LoginViewModel
+                {
+                    Id = loginTemplate.Id,
+                    FullName = loginTemplate.FullName,
+                    Environment = loginTemplate.Environment,
+                    Date = loginTemplate.Date,
+                    Time = loginTemplate.Time
+                };
+            case Overdue overdueTemplate:
+                return new OverdueViewModel
+                {
+                    Id = overdueTemplate.Id,
+                    FullName = overdueTemplate.FullName,
+                    Email = overdueTemplate.Email,
+                    ProductNumber = overdueTemplate.ProductNumber,
+                    ProductName = overdueTemplate.ProductName,
+                    OrderCode = overdueTemplate.OrderCode,
+                    OrderDate = overdueTemplate.OrderDate,
+                    OverdueDate = overdueTemplate.OverdueDate
+                };
+            case Report reportTemplate:
+                return new ReportViewModel
+                {
+                    Id = reportTemplate.Id,
+                    PortalName = reportTemplate.PortalName,
+                    ReportName = reportTemplate.ReportName,
+                    Url = reportTemplate.Url
+                };
+            case User userTemplate:
+                return new UserViewModel
+                {
+                    Id = userTemplate.Id,
+                    ImageHeader = userTemplate.ImageHeader,
+                    Email = userTemplate.Email,
+                    FullName = userTemplate.FullName,
+                    UserName = userTemplate.UserName,
+                    Password = userTemplate.Password,
+                    Company = userTemplate.Company,
+                    Url = userTemplate.Url
+                };
+            default:
+                return null; // Of eventueel een leeg EmailTemplateDto object, afhankelijk van de logica van je applicatie
         }
     }
 }

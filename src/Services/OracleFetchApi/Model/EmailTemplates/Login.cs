@@ -4,8 +4,8 @@ namespace OracleFetchApi.Model.EmailTemplates;
 
 public class Login : EmailTemplate
 {
-    [Key]
-    public int Id { get; set; }
+    // [Key]
+    // public int Id { get; set; }
     public string FullName { get; set; }
     public string Environment { get; set; }
     // public string IPAddress { get; set; } // Nieuwe eigenschap toegevoegd

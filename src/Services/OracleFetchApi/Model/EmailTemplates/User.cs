@@ -4,8 +4,8 @@ namespace OracleFetchApi.Model.EmailTemplates;
 
 public class User : EmailTemplate
 {
-    [Key]
-    public int Id { get; set; }
+    // [Key]
+    // public int Id { get; set; }
     public string ImageHeader { get; set; }
     public string Email { get; set; }
     public string FullName { get; set; }
