@@ -1,9 +1,9 @@
-﻿using EmailProcessorApi.Application.TodoLists.Commands.CreateTodoList;
-using EmailProcessorApi.Application.TodoLists.Commands.DeleteTodoList;
-using EmailProcessorApi.Application.TodoLists.Commands.UpdateTodoList;
-using EmailProcessorApi.Application.TodoLists.Queries.GetTodos;
+﻿using EmailSendApi.Application.TodoLists.Commands.CreateTodoList;
+using EmailSendApi.Application.TodoLists.Commands.DeleteTodoList;
+using EmailSendApi.Application.TodoLists.Commands.UpdateTodoList;
+using EmailSendApi.Application.TodoLists.Queries.GetTodos;
 
-namespace EmailProcessorApi.Web.Endpoints;
+namespace EmailSendApi.Web.Endpoints;
 
 public class TodoLists : EndpointGroupBase
 {

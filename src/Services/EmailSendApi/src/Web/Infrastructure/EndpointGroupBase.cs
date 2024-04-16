@@ -1,4 +1,4 @@
-﻿namespace EmailProcessorApi.Web.Infrastructure;
+﻿namespace EmailSendApi.Web.Infrastructure;
 
 public abstract class EndpointGroupBase
 {

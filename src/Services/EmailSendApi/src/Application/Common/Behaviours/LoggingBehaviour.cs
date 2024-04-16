@@ -1,5 +1,4 @@
-﻿using EmailSendApi.Application.Common.Interfaces;
-using MediatR.Pipeline;
+﻿using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
 namespace EmailSendApi.Application.Common.Behaviours;
@@ -13,13 +12,13 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
         _logger = logger;
     }
 
-    public Task Process(TRequest request, CancellationToken cancellationToken)
+    public async Task Process(TRequest request, CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
 
         _logger.LogInformation("EmailSendApi Request: {Name} {@Request}",
             requestName, request);
 
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 }

@@ -1,21 +1,24 @@
-﻿using EmailProcessorApi.Application.Common.Interfaces;
+﻿using EmailSendApi.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjection
 {
+    private const string AppName = "EmailSendApi";
+
     public static IServiceCollection AddWebServices(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
 
         services.AddHttpContextAccessor();
 
-        services.AddControllers();
-
-        services.AddHealthChecks();
-
         services.AddExceptionHandler<CustomExceptionHandler>();
+
+        services.AddRazorPages();
+
+        services.AddDaprClient();
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>

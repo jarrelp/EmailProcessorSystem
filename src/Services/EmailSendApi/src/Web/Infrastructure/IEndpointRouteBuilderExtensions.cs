@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace EmailProcessorApi.Web.Infrastructure;
+namespace EmailSendApi.Web.Infrastructure;
 
 public static class IEndpointRouteBuilderExtensions
 {

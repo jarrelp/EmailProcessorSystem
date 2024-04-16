@@ -1,8 +1,8 @@
-﻿using EmailProcessorApi.Application.Common.Exceptions;
+﻿using EmailSendApi.Application.Common.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmailProcessorApi.Web.Infrastructure;
+namespace EmailSendApi.Web.Infrastructure;
 
 public class CustomExceptionHandler : IExceptionHandler
 {
@@ -14,7 +14,7 @@ public class CustomExceptionHandler : IExceptionHandler
         _exceptionHandlers = new()
             {
                 { typeof(ValidationException), HandleValidationException },
-                { typeof(NotFoundException), HandleNotFoundException }
+                { typeof(NotFoundException), HandleNotFoundException },
             };
     }
 

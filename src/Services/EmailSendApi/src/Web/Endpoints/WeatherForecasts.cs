@@ -1,12 +1,13 @@
-﻿using EmailProcessorApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿using EmailSendApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
-namespace EmailProcessorApi.Web.Endpoints;
+namespace EmailSendApi.Web.Endpoints;
 
 public class WeatherForecasts : EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)
+            .RequireAuthorization()
             .MapGet(GetWeatherForecasts);
     }
 

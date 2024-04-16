@@ -1,11 +1,11 @@
-﻿using EmailProcessorApi.Application.Common.Models;
-using EmailProcessorApi.Application.TodoItems.Commands.CreateTodoItem;
-using EmailProcessorApi.Application.TodoItems.Commands.DeleteTodoItem;
-using EmailProcessorApi.Application.TodoItems.Commands.UpdateTodoItem;
-using EmailProcessorApi.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using EmailProcessorApi.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+﻿using EmailSendApi.Application.Common.Models;
+using EmailSendApi.Application.TodoItems.Commands.CreateTodoItem;
+using EmailSendApi.Application.TodoItems.Commands.DeleteTodoItem;
+using EmailSendApi.Application.TodoItems.Commands.UpdateTodoItem;
+using EmailSendApi.Application.TodoItems.Commands.UpdateTodoItemDetail;
+using EmailSendApi.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
-namespace EmailProcessorApi.Web.Endpoints;
+namespace EmailSendApi.Web.Endpoints;
 
 public class TodoItems : EndpointGroupBase
 {

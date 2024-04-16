@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace EmailProcessorApi.Web.Infrastructure;
+namespace EmailSendApi.Web.Infrastructure;
 
 public static class MethodInfoExtensions
 {

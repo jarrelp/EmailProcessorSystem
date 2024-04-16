@@ -1,4 +1,6 @@
-﻿namespace EmailSendApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿using System;
+
+namespace EmailSendApi.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 public class WeatherForecast
 {
