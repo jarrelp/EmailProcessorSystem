@@ -1,5 +1,4 @@
 global using Ardalis.GuardClauses;
-global using EmailSendApi.Web.Infrastructure;
 global using MediatR;
 
 global using Dapr;

@@ -8,6 +8,7 @@ public static class ProgramExtensions
     builder.Services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = $"{AppName}", Version = "v1" });
+        c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
     });
 
     public static void UseCustomSwagger(this WebApplication app)

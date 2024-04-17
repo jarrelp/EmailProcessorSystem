@@ -1,8 +1,4 @@
-﻿using EmailSendApi.Infrastructure.Data;
-using Microsoft.AspNetCore.Mvc;
-
-
-namespace Microsoft.Extensions.DependencyInjection;
+﻿namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjection
 {
@@ -14,13 +10,10 @@ public static class DependencyInjection
 
         services.AddHttpContextAccessor();
 
-        services.AddExceptionHandler<CustomExceptionHandler>();
-
-        services.AddRazorPages();
+        services.AddControllers();
 
         services.AddDaprClient();
 
-        // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
             options.SuppressModelStateInvalidFilter = true);
 

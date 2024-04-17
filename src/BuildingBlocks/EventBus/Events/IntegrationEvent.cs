@@ -1,6 +1,6 @@
 namespace EventBus.Events;
 
-public class IntegrationEvent
+public record IntegrationEvent
 {
     public Guid Id { get; }
 

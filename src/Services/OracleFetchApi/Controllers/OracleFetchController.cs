@@ -1,3 +1,4 @@
+using OracleFetchApi.IntegrationEvents.Events;
 using OracleFetchApi.Services;
 
 namespace OracleFetchApi.Controllers;
@@ -8,9 +9,14 @@ public class OracleFetchController : ControllerBase
 {
   private readonly IOracleFetchService _oracleFetchService;
 
-  public OracleFetchController(IOracleFetchService oracleFetchService)
+  private readonly IEventBus _eventBus;
+
+  public OracleFetchController(
+    IOracleFetchService oracleFetchService,
+    IEventBus eventBus)
   {
     _oracleFetchService = oracleFetchService;
+    _eventBus = eventBus;
   }
 
   [HttpGet]
@@ -51,6 +57,11 @@ public class OracleFetchController : ControllerBase
     try
     {
       await _oracleFetchService.AddEmailQueueAsync(emailQueue);
+
+      var emailTemplate = MapToRecord(emailQueue.EmailTemplate);
+
+      await _eventBus.PublishAsync(emailTemplate);
+
       return CreatedAtAction(nameof(GetEmailQueueById), new { id = emailQueue.EmailQueueId }, emailQueue);
     }
     catch (Exception ex)
@@ -93,6 +104,23 @@ public class OracleFetchController : ControllerBase
     catch (Exception ex)
     {
       return StatusCode(500, $"Internal server error: {ex.Message}");
+    }
+  }
+
+  private IntegrationEvent MapToRecord(EmailTemplate emailTemplate)
+  {
+    switch (emailTemplate)
+    {
+      case Login loginTemplate:
+        return new LoginEmail(loginTemplate.Id, loginTemplate.FullName, loginTemplate.Environment, loginTemplate.Date, loginTemplate.Time);
+      case Overdue overdueTemplate:
+        return new OverdueEmail(overdueTemplate.Id, overdueTemplate.FullName, overdueTemplate.Email, overdueTemplate.ProductNumber, overdueTemplate.ProductName, overdueTemplate.OrderCode, overdueTemplate.OrderDate, overdueTemplate.OverdueDate);
+      case Report reportTemplate:
+        return new ReportEmail(reportTemplate.Id, reportTemplate.PortalName, reportTemplate.ReportName, reportTemplate.Url);
+      case User userTemplate:
+        return new UserEmail(userTemplate.Id, userTemplate.ImageHeader, userTemplate.Email, userTemplate.FullName, userTemplate.UserName, userTemplate.Password, userTemplate.Company, userTemplate.Url);
+      default:
+        return null;
     }
   }
 }
