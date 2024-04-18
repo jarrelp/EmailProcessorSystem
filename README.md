@@ -20,3 +20,16 @@ RabbitMQ:
 http://localhost:15672/
 guest
 guest
+
+- vorige keer:
+  - DatabaseConnectie
+- nu af:
+  - Zelf een fake oracle database met sqlite
+  - Swagger
+  - Sqlite
+  - HealthChecks
+- ben mee bezig:
+  - Email data omzetten naar een email die verzonden kan worden
+  - Verzenden van de emails
+- Vragen:
+  - Zit er al een email in de database met emailbijlage?

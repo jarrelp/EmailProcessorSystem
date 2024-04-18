@@ -2,8 +2,6 @@
 
 public static class DependencyInjection
 {
-    private const string AppName = "EmailSendApi";
-
     public static IServiceCollection AddWebServices(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();

@@ -4,6 +4,7 @@ using EmailSendApi.Application.TodoItems.Commands.DeleteTodoItem;
 using EmailSendApi.Application.TodoItems.Commands.UpdateTodoItem;
 using EmailSendApi.Application.TodoItems.Commands.UpdateTodoItemDetail;
 using EmailSendApi.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+using EmailSendApi.Application.UseCases.ProcessEmailData;
 
 namespace EmailSendApi.Web.Controllers;
 
@@ -21,8 +22,10 @@ public class EmailController : ApiControllerBase
     return await Mediator.Send(command);
   }
 
+  [Topic("pubsub", "oracledata", "deadletters", false)]
   [HttpPost("process")]
-  public async Task<IActionResult> ProcessEmailDataAsync([FromBody] ProcessEmailDataInput input)
+
+  public async Task<IActionResult> ProcessEmailDataAsync(IntegrationEvent @event)
   {
     if (!ModelState.IsValid)
     {
