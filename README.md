@@ -33,3 +33,15 @@ guest
   - Verzenden van de emails
 - Vragen:
   - Zit er al een email in de database met emailbijlage?
+
+MJML bestanden (mjml is syntax)
+
+zet om in
+
+Razor Pages:
+
+toegang tot razor engine
+
+@html.displayfor (output encoding)
+
+output is veilig
