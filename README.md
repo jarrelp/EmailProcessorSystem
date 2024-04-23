@@ -10,9 +10,9 @@ Webstatus:
 cd src/Web/Webstatus
 dapr run --app-id webstatus dotnet run
 
-EmailSendApi:
-cd src/Services/EmailSendApi/src/Web
-dapr run --app-id emailsendapi dotnet run
+EmailApi:
+cd src/Services/EmailApi/src/Web
+dapr run --app-id EmailApi dotnet run
 
 [text](http://localhost:4000)
 

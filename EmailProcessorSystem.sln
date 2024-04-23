@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{343478C9-06B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webstatus", "src\Web\Webstatus\Webstatus.csproj", "{D8362CC7-8C22-4FF3-B943-BA78171B6C62}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailSendApi", "EmailSendApi", "{A0963ED8-52D4-4AB3-9000-B558FBFAF842}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailApi", "EmailApi", "{A0963ED8-52D4-4AB3-9000-B558FBFAF842}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18C9052F-A1AA-4C2A-B6DD-25CAFBF5F39E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\Services\EmailSendApi\src\Web\Web.csproj", "{9A1FF9A5-5C35-4F40-991B-51AC012F760D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\Services\EmailApi\src\Web\Web.csproj", "{9A1FF9A5-5C35-4F40-991B-51AC012F760D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Services\EmailSendApi\src\Infrastructure\Infrastructure.csproj", "{DEF95655-A0BC-49F7-892F-FFD4C9C7ACFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Services\EmailApi\src\Infrastructure\Infrastructure.csproj", "{DEF95655-A0BC-49F7-892F-FFD4C9C7ACFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Services\EmailSendApi\src\Domain\Domain.csproj", "{3E99652A-A319-42EC-A732-CEA59F6A8314}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Services\EmailApi\src\Domain\Domain.csproj", "{3E99652A-A319-42EC-A732-CEA59F6A8314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Services\EmailSendApi\src\Application\Application.csproj", "{296285C7-9268-49D5-8F7E-008007319AD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Services\EmailApi\src\Application\Application.csproj", "{296285C7-9268-49D5-8F7E-008007319AD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ builder.Services
     .AddHealthChecksUI(config =>
     {
         config.AddHealthCheckEndpoint("OracleFetchAPI", "http://localhost:5000/hc");
-        config.AddHealthCheckEndpoint("EmailSendApi", "http://localhost:5003/hc");
+        config.AddHealthCheckEndpoint("EmailApi", "http://localhost:5003/hc");
     })
     .AddInMemoryStorage();
 
