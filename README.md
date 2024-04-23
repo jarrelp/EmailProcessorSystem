@@ -2,9 +2,9 @@ cd infrastructure
 ./stop-all.ps1
 ./start-all.ps1
 
-OracleFetchApi:
-cd src/Services/OracleFetchApi
-dapr run --app-id oraclefetchapi dotnet run
+FakeOracleFetchApi:
+cd src/Services/FakeOracleFetchApi
+dapr run --app-id fakeoraclefetchapi dotnet run
 
 Webstatus:
 cd src/Web/Webstatus
@@ -12,7 +12,7 @@ dapr run --app-id webstatus dotnet run
 
 EmailApi:
 cd src/Services/EmailApi/src/Web
-dapr run --app-id EmailApi dotnet run
+dapr run --app-id emailapi dotnet run
 
 [text](http://localhost:4000)
 

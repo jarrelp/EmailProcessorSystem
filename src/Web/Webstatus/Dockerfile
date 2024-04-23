@@ -10,7 +10,7 @@ WORKDIR /src
 # Create this "restore-solution" section by running ./Create-DockerfileSolutionRestore.ps1, to optimize build cache reuse
 COPY ["src/BuildingBlocks/EventBus/EventBus.csproj", "src/BuildingBlocks/EventBus/"]
 COPY ["src/BuildingBlocks/Healthchecks/Healthchecks.csproj", "src/BuildingBlocks/Healthchecks/"]
-COPY ["src/Services/OracleFetchApi/OracleFetchApi.csproj", "src/Services/OracleFetchApi/"]
+COPY ["src/Services/FakeOracleFetchApi/FakeOracleFetchApi.csproj", "src/Services/FakeOracleFetchApi/"]
 COPY ["src/Web/Webstatus/Webstatus.csproj", "src/Web/Webstatus/"]
 COPY ["NuGet.config", "./"]
 COPY ["EmailProcessorSystem.sln", "./"]

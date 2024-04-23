@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Healthchecks", "src\Buildin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{772061A0-D297-4C2D-9DCD-CD4FF212DF12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleFetchApi", "src\Services\OracleFetchApi\OracleFetchApi.csproj", "{1A56D058-D7AC-4E31-B214-AC3098D5372A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeOracleFetchApi", "src\Services\FakeOracleFetchApi\FakeOracleFetchApi.csproj", "{1A56D058-D7AC-4E31-B214-AC3098D5372A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{343478C9-06BE-4E62-944E-835CA4E0C02A}"
 EndProject

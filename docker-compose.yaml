@@ -20,19 +20,19 @@ services:
   zipkin:
     image: openzipkin/zipkin-slim:latest
 
-  oracle-fetch-api:
-    image: ${REGISTRY:-emailprocessorsystem}/oraclefetchapi:${TAG:-latest}
+  fake-oracle-fetch-api:
+    image: ${REGISTRY:-emailprocessorsystem}/fakeoraclefetchapi:${TAG:-latest}
     build:
       context: .
-      dockerfile: src/Services/OracleFetchApi/Dockerfile
+      dockerfile: src/Services/FakeOracleFetchApi/Dockerfile
     depends_on:
       - sqldata
 
-  oracle-fetch-api-dapr:
+  fake-oracle-fetch-api-dapr:
     image: 'daprio/daprd:latest'
-    network_mode: 'service:oracle-fetch-api'
+    network_mode: 'service:fake-oracle-fetch-api'
     depends_on:
-      - oracle-fetch-api
+      - fake-oracle-fetch-api
 
   webstatus:
     image: ${REGISTRY:-emailprocessorsystem}/webstatus:${TAG:-latest}

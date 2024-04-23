@@ -11,20 +11,19 @@ WORKDIR /src
 COPY ["src/BuildingBlocks/EventBus/EventBus.csproj", "src/BuildingBlocks/EventBus/"]
 COPY ["src/BuildingBlocks/Healthchecks/Healthchecks.csproj", "src/BuildingBlocks/Healthchecks/"]
 COPY ["src/Services/FakeOracleFetchApi/FakeOracleFetchApi.csproj", "src/Services/FakeOracleFetchApi/"]
-COPY ["src/Services/EmailApi/src/Web/Web.csproj", "src/Services/EmailApi/src/Web/"]
 COPY ["src/Web/Webstatus/Webstatus.csproj", "src/Web/Webstatus/"]
 COPY ["NuGet.config", "./"]
 COPY ["EmailProcessorSystem.sln", "./"]
 RUN dotnet restore "EmailProcessorSystem.sln"
 
 COPY . .
-WORKDIR "/src/src/Services/EmailApi/src/Web"
-# RUN dotnet build "EmailApi.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Services/FakeOracleFetchApi"
+# RUN dotnet build "FakeOracleFetchApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish --no-restore "EmailApi.csproj" -c Release -o /app/publish
+RUN dotnet publish --no-restore "FakeOracleFetchApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "EmailApi.dll"]
+ENTRYPOINT ["dotnet", "FakeOracleFetchApi.dll"]
