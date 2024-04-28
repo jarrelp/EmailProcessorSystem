@@ -1,7 +1,6 @@
 var appName = "FakeOracleFetchApi";
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.AddCustomSerilog();
 builder.AddCustomSwagger();
 builder.AddCustomHealthChecks();
 builder.AddCustomApplicationServices();
@@ -42,8 +41,4 @@ try
 catch (Exception ex)
 {
   app.Logger.LogCritical(ex, "Host terminated unexpectedly ({ApplicationName})...", appName);
-}
-finally
-{
-  Serilog.Log.CloseAndFlush();
 }

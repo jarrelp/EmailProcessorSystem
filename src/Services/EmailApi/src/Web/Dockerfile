@@ -1,5 +1,5 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-ARG NET_IMAGE=8.0-jammy
+ARG NET_IMAGE=8.0
 FROM mcr.microsoft.com/dotnet/aspnet:${NET_IMAGE} AS base
 WORKDIR /app
 EXPOSE 80
@@ -11,8 +11,15 @@ WORKDIR /src
 COPY ["src/BuildingBlocks/EventBus/EventBus.csproj", "src/BuildingBlocks/EventBus/"]
 COPY ["src/BuildingBlocks/Healthchecks/Healthchecks.csproj", "src/BuildingBlocks/Healthchecks/"]
 COPY ["src/Services/FakeOracleFetchApi/FakeOracleFetchApi.csproj", "src/Services/FakeOracleFetchApi/"]
-COPY ["src/Services/EmailApi/src/Web/Web.csproj", "src/Services/EmailApi/src/Web/"]
 COPY ["src/Web/Webstatus/Webstatus.csproj", "src/Web/Webstatus/"]
+
+# Inrelevante Containers
+COPY ["src/Services/EmailApi/src/Web/Web.csproj", "src/Services/EmailApi/src/Web/"]
+COPY ["src/Services/OracleFetchApi/OracleFetchApi.csproj", "src/Services/OracleFetchApi/"]
+COPY ["src/Services/EmailApi/src/Infrastructure/Infrastructure.csproj", "src/Services/EmailApi/src/Infrastructure/"]
+COPY ["src/Services/EmailApi/src/Domain/Domain.csproj", "src/Services/EmailApi/src/Domain/"]
+COPY ["src/Services/EmailApi/src/Application/Application.csproj", "src/Services/EmailApi/src/Application/"]
+
 COPY ["NuGet.config", "./"]
 COPY ["EmailProcessorSystem.sln", "./"]
 RUN dotnet restore "EmailProcessorSystem.sln"

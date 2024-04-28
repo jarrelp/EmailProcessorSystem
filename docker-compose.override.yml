@@ -20,12 +20,6 @@ services:
     ports:
       - '5379:6379'
 
-  seq:
-    environment:
-      - ACCEPT_EULA=Y
-    ports:
-      - '5340:80'
-
   sqldata:
     environment:
       - SA_PASSWORD=Pass@word
@@ -43,7 +37,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - SeqServerUrl=http://seq
     ports:
       - '5000:80'
       - '50000:50000'
@@ -59,7 +52,7 @@ services:
         '-components-path',
         '/components',
         '-config',
-        '/configuration/-config.yaml',
+        '/configuration/email-processor-system-config.yaml',
       ]
     volumes:
       - './dapr/components/:/components'
@@ -68,7 +61,7 @@ services:
   webstatus:
     environment:
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - HealthChecksUI__HealthChecks__0__Name=Oracle Fetch Api
+      - HealthChecksUI__HealthChecks__0__Name=Fake Oracle Fetch Api
       - HealthChecksUI__HealthChecks__0__Uri=http://fake-oracle-fetch-api/hc
     ports:
       - '6000:80'
