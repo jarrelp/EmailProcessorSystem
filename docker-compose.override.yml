@@ -9,7 +9,7 @@ services:
   maildev:
     ports:
       - '5500:1080'
-      - '4025:4025'
+      - '1025:1025'
 
   rabbitmq:
     ports:
@@ -37,9 +37,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - RetryMigrations=true
     ports:
-      - '5000:80'
-      - '50000:50000'
+      - '5101:80'
+      - '50002:50001'
 
   fake-oracle-fetch-api-dapr:
     command:
@@ -52,7 +53,7 @@ services:
         '-components-path',
         '/components',
         '-config',
-        '/configuration/email-processor-system-config.yaml',
+        '/configuration/config.yaml',
       ]
     volumes:
       - './dapr/components/:/components'
@@ -64,12 +65,12 @@ services:
       - HealthChecksUI__HealthChecks__0__Name=Fake Oracle Fetch Api
       - HealthChecksUI__HealthChecks__0__Uri=http://fake-oracle-fetch-api/hc
     ports:
-      - '6000:80'
+      - '5107:80'
 
   dapr-placement:
-    command: ['./placement', '-port', '60000', '-log-level', 'debug']
+    command: ['./placement', '-port', '50000', '-log-level', 'debug']
     ports:
-      - '60000:60000'
+      - '50000:50000'
 
 volumes:
   sqldata:

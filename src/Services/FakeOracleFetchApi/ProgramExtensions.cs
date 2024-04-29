@@ -1,4 +1,3 @@
-using FakeOracleFetchApi.Infrastructure;
 using FakeOracleFetchApi.Repositories;
 using FakeOracleFetchApi.Services;
 
@@ -7,6 +6,13 @@ namespace FakeOracleFetchApi;
 public static class ProgramExtensions
 {
     private const string AppName = "FakeOracleFetchApi";
+
+    public static void AddCustomConfiguration(this WebApplicationBuilder builder)
+    {
+        builder.Configuration.AddDaprSecretStore(
+           "secretstore",
+           new DaprClientBuilder().Build());
+    }
 
     public static void AddCustomSwagger(this WebApplicationBuilder builder) =>
     builder.Services.AddSwaggerGen(c =>
@@ -29,8 +35,8 @@ public static class ProgramExtensions
             .AddDapr()
             .AddSqlServer(
                 builder
-                // .Configuration["ConnectionStrings:OracleDB"]
-                .Configuration.GetConnectionString("DefaultConnection")
+                .Configuration["ConnectionStrings:OracleDB"]
+                // .Configuration.GetConnectionString("DefaultConnection")
                 !,
                 name: "OracleDB-check",
                 tags: new[] { "oracledb" });
@@ -48,8 +54,8 @@ public static class ProgramExtensions
     {
         builder.Services.AddDbContext<OracleDbContext>(
             options => options.UseSqlServer(builder
-            // .Configuration["ConnectionStrings:OracleDB"]
-            .Configuration.GetConnectionString("DefaultConnection")
+            .Configuration["ConnectionStrings:OracleDB"]
+            // .Configuration.GetConnectionString("DefaultConnection")
             !));
     }
 
@@ -83,8 +89,8 @@ public static class ProgramExtensions
                             exception.GetType().Name,
                             exception.Message,
                             retry,
-                            // configuration["ConnectionStrings:OracleDB"]);
-                            configuration.GetConnectionString("DefaultConnection"));
+                            configuration["ConnectionStrings:OracleDB"]);
+                        // configuration.GetConnectionString("DefaultConnection"));
                     }
                 );
         }

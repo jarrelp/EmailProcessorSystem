@@ -1,6 +1,7 @@
 var appName = "FakeOracleFetchApi";
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddCustomConfiguration();
 builder.AddCustomSwagger();
 builder.AddCustomHealthChecks();
 builder.AddCustomApplicationServices();
