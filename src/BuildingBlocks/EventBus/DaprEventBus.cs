@@ -2,7 +2,7 @@ namespace EventBus;
 
 public class DaprEventBus : IEventBus
 {
-    private const string PubSubName = "pubsub";
+    private const string PubSubName = "e-pubsub";
 
     private readonly DaprClient _dapr;
     private readonly ILogger _logger;

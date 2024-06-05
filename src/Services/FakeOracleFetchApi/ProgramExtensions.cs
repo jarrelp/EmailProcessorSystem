@@ -35,9 +35,7 @@ public static class ProgramExtensions
             .AddDapr()
             .AddSqlServer(
                 builder
-                .Configuration["ConnectionStrings:OracleDB"]
-                // .Configuration.GetConnectionString("DefaultConnection")
-                !,
+                .Configuration["ConnectionStrings:OracleDB"]!,
                 name: "OracleDB-check",
                 tags: new[] { "oracledb" });
 
@@ -54,9 +52,7 @@ public static class ProgramExtensions
     {
         builder.Services.AddDbContext<OracleDbContext>(
             options => options.UseSqlServer(builder
-            .Configuration["ConnectionStrings:OracleDB"]
-            // .Configuration.GetConnectionString("DefaultConnection")
-            !));
+            .Configuration["ConnectionStrings:OracleDB"]!));
     }
 
     public static void ApplyDatabaseMigration(this WebApplication app)
@@ -90,7 +86,6 @@ public static class ProgramExtensions
                             exception.Message,
                             retry,
                             configuration["ConnectionStrings:OracleDB"]);
-                        // configuration.GetConnectionString("DefaultConnection"));
                     }
                 );
         }
