@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<report imgheader="cid:EMAIL_HEADER_VIRGIN2.png-----7D81B75CCC90D2974F7A1CBD">
+	<portalname>
+		Dummy portal 1
+	</portalname>
+	<reportname>
+		Dummy rapportage 1
+	</reportname>
+	<url>
+		http://fashionfabriek.ecgoing.eu:81/virgin2/report/1
+	</url>
+</report>

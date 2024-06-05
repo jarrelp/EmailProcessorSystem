@@ -1,4 +1,4 @@
-using EmailApi;
+using EmailApi.Web;
 using EmailApi.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);

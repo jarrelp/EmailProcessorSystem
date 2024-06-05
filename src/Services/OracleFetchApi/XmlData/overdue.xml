@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<overdue imgheader="cid:EMAIL_HEADER_VIRGIN2.png-----7D81B75CCC90D2974F7A1CBD">
+	<fullname>
+		Dummy 1 Persoon
+	</fullname>
+	<email>
+		dummy1@ecmanage.eu
+	</email>
+	<productnr>
+		TUG-101
+	</productnr>
+	<productname>
+		Winterbroek, blauw
+	</productname>
+	<ordercode>
+		VIRGIN211182101
+	</ordercode>
+	<orderdate>
+		2024-06-04
+	</orderdate>
+	<overduedate>
+		2024-06-04
+	</overduedate>
+</overdue>

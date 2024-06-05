@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<user imgheader="cid:EMAIL_HEADER_VIRGIN2.png-----7D81B75CCC90D2974F7A1CBD">
+	<url>
+		http://fashionfabriek.ecgoing.eu:81/virgin2/login?token=h-gA\1Cb)50X
+	</url>
+	<username>
+		dummy1
+	</username>
+	<password>
+		4o-Qq8D%4hYB
+	</password>
+	<email>
+		dummy1@ecmanage.eu
+	</email>
+	<companyname>
+		Testomgeving
+	</companyname>
+	<personid_extern>
+		PERS_1
+	</personid_extern>
+	<fullname>
+		Dummy 1 Persoon
+	</fullname>
+	<street>
+		Laan van Vredenoord
+	</street>
+	<primarynumber>
+		33
+	</primarynumber>
+	<additionalnumber>
+	</additionalnumber>
+	<zipcode>
+		2289 DA
+	</zipcode>
+	<city>
+		Rijswijk
+	</city>
+	<country>
+		Nederland
+	</country>
+</user>

@@ -2,22 +2,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OracleFetchApi.Model.EmailTemplates;
 
-public class Report : EmailTemplate
+public class Report : XmlData
 {
-    // [Key]
-    // public int Id { get; set; }
     public string PortalName { get; set; }
-
     public string ReportName { get; set; }
-
     public string Url { get; set; }
 
-    // Constructor
-    public Report(int id, string portalName, string reportName, string url) : base(id)
-    {
-        Id = id;
-        PortalName = portalName;
-        ReportName = reportName;
-        Url = url;
-    }
+    // public Report(string portalName, string reportName, string url)
+    // {
+    //     PortalName = portalName;
+    //     ReportName = reportName;
+    //     Url = url;
+    // }
 }

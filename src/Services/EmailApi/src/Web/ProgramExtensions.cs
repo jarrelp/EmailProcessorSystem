@@ -1,4 +1,4 @@
-namespace EmailApi;
+namespace EmailApi.Web;
 
 public static class ProgramExtensions
 {

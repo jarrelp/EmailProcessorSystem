@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<login imgheader="cid:EMAIL_HEADER_VIRGIN2.png-----7D81B75CCC90D2974F7A1CBD">
+	<fullname>
+		Dummy 1 Persoon
+	</fullname>
+	<environment>
+		Dummy portal 1
+	</environment>
+	<ipaddress>
+		127.0.0.1
+	</ipaddress>
+	<date>
+		2024-06-05
+	</date>
+	<time>
+		10:30
+	</time>
+</login>

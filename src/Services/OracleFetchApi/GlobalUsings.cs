@@ -14,7 +14,7 @@ global using OracleFetchApi.Repositories;
 // global using OracleFetchApi.Services;
 global using OracleFetchApi.Model;
 global using OracleFetchApi.Model.Enums;
-global using OracleFetchApi.Model.EmailTemplates;
+// global using OracleFetchApi.Model.EmailTemplates;
 
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;

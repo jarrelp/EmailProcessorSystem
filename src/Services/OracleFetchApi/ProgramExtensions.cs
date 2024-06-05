@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace OracleFetchApi;
 
 public static class ProgramExtensions
@@ -33,5 +35,7 @@ public static class ProgramExtensions
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             return new OracleDCDataProvider(connectionString);
         });
+
+        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
     }
 }
