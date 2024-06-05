@@ -1,11 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddHealthChecksUI(config =>
-    {
-        config.AddHealthCheckEndpoint("OracleFetchAPI", "http://localhost:5000/hc");
-        config.AddHealthCheckEndpoint("EmailApi", "http://localhost:5003/hc");
-    })
+    .AddHealthChecksUI(
+    //     config =>
+    // {
+    //     config.AddHealthCheckEndpoint("OracleFetchAPI", "http://localhost:5000/hc");
+    //     config.AddHealthCheckEndpoint("EmailApi", "http://localhost:5003/hc");
+    // }
+    )
     .AddInMemoryStorage();
 
 builder.Logging.AddJsonConsole();

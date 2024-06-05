@@ -1,7 +1,5 @@
-using FakeOracleFetchApi.Infrastructure;
 using FakeOracleFetchApi.Repositories;
 using FakeOracleFetchApi.Services;
-using Serilog;
 
 namespace FakeOracleFetchApi;
 
@@ -9,18 +7,11 @@ public static class ProgramExtensions
 {
     private const string AppName = "FakeOracleFetchApi";
 
-    public static void AddCustomSerilog(this WebApplicationBuilder builder)
+    public static void AddCustomConfiguration(this WebApplicationBuilder builder)
     {
-        var seqServerUrl = builder.Configuration["SeqServerUrl"];
-
-        Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(builder.Configuration)
-            .WriteTo.Console()
-            .WriteTo.Seq(seqServerUrl!)
-            .Enrich.WithProperty("ApplicationName", AppName)
-            .CreateLogger();
-
-        builder.Host.UseSerilog();
+        builder.Configuration.AddDaprSecretStore(
+           "secretstore",
+           new DaprClientBuilder().Build());
     }
 
     public static void AddCustomSwagger(this WebApplicationBuilder builder) =>
@@ -44,8 +35,8 @@ public static class ProgramExtensions
             .AddDapr()
             .AddSqlServer(
                 builder
-                // .Configuration["ConnectionStrings:OracleDB"]
-                .Configuration.GetConnectionString("DefaultConnection")
+                .Configuration["ConnectionStrings:OracleDB"]
+                // .Configuration.GetConnectionString("DefaultConnection")
                 !,
                 name: "OracleDB-check",
                 tags: new[] { "oracledb" });
@@ -63,8 +54,8 @@ public static class ProgramExtensions
     {
         builder.Services.AddDbContext<OracleDbContext>(
             options => options.UseSqlServer(builder
-            // .Configuration["ConnectionStrings:OracleDB"]
-            .Configuration.GetConnectionString("DefaultConnection")
+            .Configuration["ConnectionStrings:OracleDB"]
+            // .Configuration.GetConnectionString("DefaultConnection")
             !));
     }
 
@@ -75,13 +66,13 @@ public static class ProgramExtensions
         // migrations instead.
         using var scope = app.Services.CreateScope();
 
-        var retryPolicy = CreateRetryPolicy(app.Configuration, Log.Logger);
+        var retryPolicy = CreateRetryPolicy(app.Configuration, app.Logger);
         var context = scope.ServiceProvider.GetRequiredService<OracleDbContext>();
 
         retryPolicy.Execute(context.Database.Migrate);
     }
 
-    private static Policy CreateRetryPolicy(IConfiguration configuration, Serilog.ILogger logger)
+    private static Policy CreateRetryPolicy(IConfiguration configuration, ILogger logger)
     {
         // Only use a retry policy if configured to do so.
         // When running in an orchestrator/K8s, it will take care of restarting failed services.
@@ -92,14 +83,14 @@ public static class ProgramExtensions
                     sleepDurationProvider: _ => TimeSpan.FromSeconds(5),
                     onRetry: (exception, retry, _) =>
                     {
-                        logger.Warning(
+                        logger.LogWarning(
                             exception,
                             "Exception {ExceptionType} with message {Message} detected during database migration (retry attempt {retry}, connection {connection})",
                             exception.GetType().Name,
                             exception.Message,
                             retry,
-                            // configuration["ConnectionStrings:OracleDB"]);
-                            configuration.GetConnectionString("DefaultConnection"));
+                            configuration["ConnectionStrings:OracleDB"]);
+                        // configuration.GetConnectionString("DefaultConnection"));
                     }
                 );
         }
