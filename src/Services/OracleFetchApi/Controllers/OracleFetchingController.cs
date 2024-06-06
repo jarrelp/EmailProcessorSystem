@@ -38,43 +38,6 @@ public class OracleFetchingController : ControllerBase
         }
     }
 
-    // [HttpGet]
-    // public async Task<ActionResult<List<Events.IntegrationEvent>>> GetEmailQueueItems()
-    // {
-    //     var emailQueueItems = await _emailDataRepository.GetTopEmailQueueItemsAsync(5);
-
-    //     if (emailQueueItems == null || !emailQueueItems.Any())
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     var integrationEvents = emailQueueItems.Select(emailQueue =>
-    //     {
-    //         if (emailQueue.XmlData is Login loginData)
-    //         {
-    //             return _mapper.Map<LoginIntegrationEvent>(emailQueue);
-    //         }
-    //         else if (emailQueue.XmlData is Overdue overdueData)
-    //         {
-    //             return _mapper.Map<OverdueIntegrationEvent>(emailQueue);
-    //         }
-    //         else if (emailQueue.XmlData is Report reportData)
-    //         {
-    //             return _mapper.Map<ReportIntegrationEvent>(emailQueue);
-    //         }
-    //         else if (emailQueue.XmlData is User userData)
-    //         {
-    //             return _mapper.Map<UserIntegrationEvent>(emailQueue);
-    //         }
-    //         else
-    //         {
-    //             return null;
-    //         }
-    //     }).Where(e => e != null).ToList();
-
-    //     return Ok(integrationEvents);
-    // }
-
     [HttpPost("ConvertXmlToUser")]
     public ActionResult<User> ConvertXmlToUser(string xmlData)
     {
@@ -110,12 +73,12 @@ public class OracleFetchingController : ControllerBase
         }
     }
 
-    [HttpGet("XmlData")]
-    public async Task<ActionResult<List<EmailQueueItem>>> GetXmlData()
+    [HttpGet("IntegrationEvents")]
+    public async Task<ActionResult<List<Events.IntegrationEvent>>> GetIntegrationEvents()
     {
         try
         {
-            var emailQueueItems = await _emailDataRepository.GetXmlData(2);
+            var emailQueueItems = await _emailDataRepository.GetIntegrationEvents(2);
 
             if (emailQueueItems == null || emailQueueItems.Count() == 0)
             {
@@ -123,53 +86,6 @@ public class OracleFetchingController : ControllerBase
             }
 
             return Ok(emailQueueItems);
-        }
-        catch (Exception ex)
-        {
-            // Log the exception (not shown here)
-            return StatusCode(500, "Internal server error");
-        }
-    }
-
-    [HttpGet("top")]
-    public async Task<ActionResult<List<EmailQueueItem>>> GetTopEmailQueueItemsAsync()
-    {
-        try
-        {
-            var emailQueueItems = await _emailDataRepository.GetTopEmailQueueItemsAsync(5);
-
-            if (emailQueueItems == null || emailQueueItems.Count() == 0)
-            {
-                return NoContent();
-            }
-
-            return Ok(emailQueueItems);
-        }
-        catch (Exception ex)
-        {
-            // Log the exception (not shown here)
-            return StatusCode(500, "Internal server error");
-        }
-    }
-
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<XmlData>>> GetEmailQueueDataAsync()
-    {
-        try
-        {
-            var emailQueueData = await _emailDataRepository.GetTopEmailQueueItemsAsync(5);
-
-            if (emailQueueData == null || emailQueueData.Count() == 0)
-            {
-                return NoContent();
-            }
-
-            var ret = emailQueueData.Select(eq => new EmailQueueItem
-            {
-                // XmlData = _mapper.Map<XmlData>(eq.XmlData)
-            }).ToList();
-
-            return Ok(emailQueueData);
         }
         catch (Exception ex)
         {
@@ -179,44 +95,29 @@ public class OracleFetchingController : ControllerBase
     }
 
     [HttpGet("Test")]
-        public ActionResult<Login> ConvertXmlToLogin(string xmlData)
-        {
-            try
-            {
-                // Parse de XML-string naar een XElement
-                XElement element = XElement.Parse(xmlData);
-
-                // Maak een nieuw Login-object en vul de eigenschappen in
-                Login login = new Login
-                {
-                    FullName = element.Element("fullname")?.Value,
-                    Environment = element.Element("environment")?.Value,
-                    IPAddress = element.Element("ipaddress")?.Value,
-                    Date = DateTime.Parse(element.Element("date")?.Value),
-                    Time = TimeSpan.Parse(element.Element("time")?.Value)
-                };
-
-                return login;
-            }
-            catch (Exception ex)
-            {
-                // Vang eventuele fouten op bij het parsen van de XML
-                return BadRequest($"Error converting XML to Login object: {ex.Message}");
-            }
-        }
-
-    [HttpGet("GetAll")]
-    public ActionResult GetAll()
+    public ActionResult<Login> ConvertXmlToLogin(string xmlData)
     {
         try
         {
-            _emailDataRepository.GetAll();
-            return StatusCode(200);
+            // Parse de XML-string naar een XElement
+            XElement element = XElement.Parse(xmlData);
+
+            // Maak een nieuw Login-object en vul de eigenschappen in
+            Login login = new Login
+            {
+                FullName = element.Element("fullname")?.Value,
+                Environment = element.Element("environment")?.Value,
+                IPAddress = element.Element("ipaddress")?.Value,
+                Date = DateTime.Parse(element.Element("date")?.Value),
+                Time = TimeSpan.Parse(element.Element("time")?.Value)
+            };
+
+            return login;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occurred while getting email data");
-            return StatusCode(500);
+            // Vang eventuele fouten op bij het parsen van de XML
+            return BadRequest($"Error converting XML to Login object: {ex.Message}");
         }
     }
 
@@ -226,21 +127,6 @@ public class OracleFetchingController : ControllerBase
         try
         {
             _emailDataRepository.GetAllNotPickedUp();
-            return StatusCode(200);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error occurred while getting email data");
-            return StatusCode(500);
-        }
-    }
-
-    [HttpGet("GetByEmailQueueId")]
-    public ActionResult GetByEmailQueueId(int id)
-    {
-        try
-        {
-            _emailDataRepository.GetByEmailQueueId(id);
             return StatusCode(200);
         }
         catch (Exception ex)
@@ -264,12 +150,12 @@ public class OracleFetchingController : ControllerBase
         }
     }
 
-    [HttpPut("UpdateSent/{id}")]
-    public async Task<IActionResult> UpdateSent(int id, [FromQuery] string sentValue)
+    [HttpPut("SetSentToNotPickedUp/{id}")]
+    public async Task<IActionResult> SetSentToNotPickedUp(int id)
     {
         try
         {
-            _emailDataRepository.SetSent(id, sentValue);
+            _emailDataRepository.SetSentToNotPickedUp(id);
             return Ok();
         }
         catch (Exception ex)
