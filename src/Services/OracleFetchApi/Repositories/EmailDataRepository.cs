@@ -182,7 +182,7 @@ public class EmailDataRepository : IEmailDataRepository
 
   public void GetAllNotPickedUp()
   {
-    OracleDataSet loDS = _oracleDCDataprovider.GetDataSet(new OracleCommand($"select * from (select * from gnt_emailqueue order by emailqueueid desc) where sent  = 'Y'"));
+    OracleDataSet loDS = _oracleDCDataprovider.GetDataSet(new OracleCommand($"select * from (select * from gnt_emailqueue order by emailqueueid desc) where sent  = 'N'"));
     DataTable loDT = loDS.Tables[0];
 
     foreach (DataRow loRow in loDT.Rows)
@@ -221,6 +221,12 @@ public class EmailDataRepository : IEmailDataRepository
   public void SetSentToError(int id)
   {
     OracleCommand loCmd = new OracleCommand($"UPDATE gnt_emailqueue SET sent = 'E', modified_on = TO_DATE('{DateTime.Now:yyyy-MM-dd HH:mm:ss}', 'YYYY-MM-DD HH24:MI:SS'), modified_by = 'EmailApi' WHERE emailqueueid = {id}");
+    _oracleDCDataprovider.ExecuteQuery(loCmd);
+  }
+
+  public void SetAttempt(int id, int attempts)
+  {
+    OracleCommand loCmd = new OracleCommand($"UPDATE gnt_emailqueue SET attempts = '{attempts}', modified_on = TO_DATE('{DateTime.Now:yyyy-MM-dd HH:mm:ss}', 'YYYY-MM-DD HH24:MI:SS'), modified_by = 'EmailApi' WHERE emailqueueid = {id}");
     _oracleDCDataprovider.ExecuteQuery(loCmd);
   }
 

@@ -11,6 +11,7 @@ public interface IEmailDataRepository
   void SetAllSentToNotPickedUp();
   void SetSentToIsBusy(int id);
   void SetSentToError(int id);
+  void SetAttempt(int id, int attempts);
   void DeleteAllEmailQueueItems();
   void GenerateEmails(int amount);
   Task<List<string>> GetColumnNamesAsync();
